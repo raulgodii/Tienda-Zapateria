@@ -13,6 +13,7 @@ use Controllers\ProductoController;
         <tr>
             <td><?=$producto['nombre']?></td>
             <td><?=$producto['id']?></td>
+            <td><img src="../../img/<?=$producto['imagen']?>" alt="img"></td>
         </tr>
         <?php endforeach; ?>
 </table>

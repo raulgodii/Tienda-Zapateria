@@ -16,6 +16,7 @@ class Pages
                 $$name = $value;
             }
         }
+        
         require_once "Views/layout/header.php";
         require_once "Views/$pageName.php"; // incluimos la pagina indicada
         require_once "Views/layout/footer.php";

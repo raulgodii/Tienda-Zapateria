@@ -8,19 +8,21 @@ use Controllers\CategoriaController;
     <ul>
         <?php foreach($categorias as $categoria): ?>
         <li>
-            <a href="<?=BASE_URL?>Categoria/ver/?id=<?=$categoria['id']?>"><?=$categoria['nombre']?></a>
+            <a href="<?=BASE_URL?>Categoria/verProductos/<?=$categoria['id']?>"><?=$categoria['nombre']?></a>
         </li>
         <?php endforeach; ?>
     </ul>
 </nav>
 
-<ul>
-    <?php if(isset($_SESSION['identity']) && $_SESSION['identity']->rol == "admin"): ?>
+
+<?php if(isset($_SESSION['identity']) && $_SESSION['identity']->rol == "admin"): ?>
+    <ul>
         <li><a href="<?=BASE_URL?>Categoria/pedidos/">Gestionar pedidos</a></li>
         <li><a href="<?=BASE_URL?>Producto/gestionarProductos/">Gestionar productos</a></li>
         <li><a href="<?=BASE_URL?>Categoria/gestionarCategorias/">Gestionar categorias</a></li>
-    <?php endif; ?>
-</ul>
+    </ul>
+<?php endif; ?>
+
 
 <ul>
 <?php if(!isset($_SESSION['identity'])): ?>

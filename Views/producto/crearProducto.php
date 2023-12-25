@@ -1,6 +1,9 @@
 
 <?php
-use Controllers\ProductoController;
+
+use Controllers\CategoriaController;
+$categoriaController = new CategoriaController;
+$categorias = $categoriaController->obtenerCategorias();
 ?>
 
 <h1>Crear Producto</h1>
@@ -39,7 +42,7 @@ use Controllers\ProductoController;
     <br>
 
     <label for="imagen">Imagen:</label>
-    <input type="file" name="producto[imagen]" id="imagen">
+    <input type="file" name="imagen" accept="image/*" id="imagen" required>
     <br>
 
     <input type="submit" value="Agregar Producto">

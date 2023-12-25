@@ -28,4 +28,9 @@ class CategoriaController{
         Categoria::guardarCategoria($nuevaCategoria);
         $this->pages->render("categoria/crearCategoria");
     }
+
+    public function verProductos($categoriaId):void {
+        $productos = Categoria::getProductos($categoriaId);
+        $this->pages->render("categoria/verProductos", ["categoria" => $categoriaId, "productos" => [$productos]]);
+    }
 }

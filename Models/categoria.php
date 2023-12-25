@@ -45,4 +45,12 @@ class Categoria {
         $categoria->db->consulta("INSERT INTO categorias (nombre) VALUES (\"$nuevaCategoria\")");
         $categoria->db->cierraConexion();
     }
+
+    public static function getProductos($categoriaID):?array{
+        $categoria = new Categoria();
+        $categoria->db->consulta("SELECT * FROM productos WHERE categoria_id={$categoriaID}");
+        $productos = $categoria->db->extraer_todos();
+        $categoria->db->cierraConexion();
+        return $productos;
+    }
 }

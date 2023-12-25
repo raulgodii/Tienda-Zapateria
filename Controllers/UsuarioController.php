@@ -45,12 +45,8 @@ class UsuarioController{
         $this->pages->render('Usuario/registro');
     }
 
-    public function identifica(){
-        $this->pages->render('usuario/login');
-    }
-
     public function login(){
-        
+
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             
             if($_POST['data']){
@@ -87,8 +83,8 @@ class UsuarioController{
                 
                 $_SESSION['identity'] ="failed";
             }
+            
         } 
-
         $this->pages->render('Usuario/login');
     }
 

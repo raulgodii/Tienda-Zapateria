@@ -41,12 +41,37 @@ class Producto {
     }
 
     public static function guardarProducto($nuevoProducto):void{
+        
         $producto = new Producto();
-        var_dump($nuevoProducto);
-        $producto->db->consulta("INSERT INTO productos (categoria_id, nombre, descripcion, precio, stock, oferta, fecha, imagen) 
-            VALUES ({$nuevoProducto['categoria_id']}, '{$nuevoProducto['nombre']}', '{$nuevoProducto['descripcion']}', {$nuevoProducto['precio']}, {$nuevoProducto['stock']}, '{$nuevoProducto['oferta']}', '{$nuevoProducto['fecha']}', 'url')"
-        );
 
+        if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] === UPLOAD_ERR_OK) {
+            // Obtener información sobre la foto
+            $nombreFoto = $_FILES["imagen"]["name"];
+            $tipoFoto = $_FILES["imagen"]["type"];
+            $rutaTempFoto = $_FILES["imagen"]["tmp_name"];
+    
+            // Verificar el tipo de la foto
+            $tiposPermitidos = ["image/jpeg", "image/png", "image/gif"];
+            if (!in_array($tipoFoto, $tiposPermitidos)) {
+                echo "Error: El tipo de archivo no está permitido.";
+                exit;
+            }
+    
+            // Mover la foto al directorio deseado
+            $directorioDestino = "./img/";
+            $rutaFinalFoto = $directorioDestino . $nombreFoto;
+            move_uploaded_file($rutaTempFoto, $rutaFinalFoto);
+
+            // Guardar producto en BD
+            var_dump($nuevoProducto);
+            $producto->db->consulta("INSERT INTO productos (categoria_id, nombre, descripcion, precio, stock, oferta, fecha, imagen) 
+            VALUES ({$nuevoProducto['categoria_id']}, '{$nuevoProducto['nombre']}', '{$nuevoProducto['descripcion']}', {$nuevoProducto['precio']}, {$nuevoProducto['stock']}, '{$nuevoProducto['oferta']}', '{$nuevoProducto['fecha']}', '{$nombreFoto}')"
+        );
+    
+        } else {
+            echo "Error: No se pudo cargar la foto.";
+            
+        }
 
         $producto->db->cierraConexion();
     }
