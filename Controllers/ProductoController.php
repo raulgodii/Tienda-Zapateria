@@ -28,4 +28,12 @@ class ProductoController{
         Producto::guardarProducto($nuevoProducto);
         $this->pages->render("producto/gestionarProductos");
     }
+
+    public static function getNombre($id){
+        return Producto::getNombre($id)[0]["nombre"];
+    }
+
+    public static function getPrecio($id){
+        return Producto::getPrecio($id)[0]["precio"];
+    }
 }

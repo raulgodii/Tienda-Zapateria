@@ -3,6 +3,7 @@
 
 namespace Routes;
 
+use Controllers\CarritoController;
 use Controllers\CategoriaController;
 use Controllers\ProductoController;
 use Lib\Router;
@@ -64,6 +65,22 @@ class RoutesClass{
 
         Router::add('POST','/Producto/guardarProducto/', function (){
             return (new ProductoController)->guardarProducto();
+        });
+
+        Router::add('GET','/Carrito/verCarrito/', function (){
+            return (new CarritoController)->verCarrito();
+        });
+
+        Router::add('GET','/Carrito/Agregar/:id', function (int $id){
+            return (new CarritoController)->agregar($id);
+        });
+
+        Router::add('GET','/Carrito/Quitar/:id', function (int $id){
+            return (new CarritoController)->quitar($id);
+        });
+
+        Router::add('GET','/Carrito/Vaciar/', function (){
+            return (new CarritoController)->vaciar();
         });
         
         Router::dispatch();

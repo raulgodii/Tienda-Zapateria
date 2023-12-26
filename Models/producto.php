@@ -22,11 +22,6 @@ class Producto {
         $this->id = $id;
     }
 
-    // Getter para el nombre
-    public function getNombre() {
-        return $this->nombre;
-    }
-
     // Setter para el nombre
     public function setNombre($nombre) {
         $this->nombre = $nombre;
@@ -35,6 +30,22 @@ class Producto {
     public static function getAll():?array{
         $producto = new Producto();
         $producto->db->consulta("SELECT * FROM productos ORDER BY id DESC");
+        $productos = $producto->db->extraer_todos();
+        $producto->db->cierraConexion();
+        return $productos;
+    }
+
+    public static function getNombre($id){
+        $producto = new Producto();
+        $producto->db->consulta("SELECT nombre FROM productos WHERE id={$id}");
+        $productos = $producto->db->extraer_todos();
+        $producto->db->cierraConexion();
+        return $productos;
+    }
+
+    public static function getPrecio($id){
+        $producto = new Producto();
+        $producto->db->consulta("SELECT precio FROM productos WHERE id={$id}");
         $productos = $producto->db->extraer_todos();
         $producto->db->cierraConexion();
         return $productos;
