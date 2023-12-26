@@ -67,7 +67,7 @@ if (empty($carrito)): ?>
 
     <p>
         <a href="<?=BASE_URL?>">Seguir comprando</a>
-        <td><a href="<?=BASE_URL?>Carrito/Vaciar/">Realizar Pedido</a></td>
+        <td><a href="<?=BASE_URL?>Pedido/Realizar/">Realizar Pedido</a></td>
     </p>
 <?php endif; ?>
 
