@@ -15,6 +15,7 @@ return array(
     'Repositories\\' => array($baseDir . '/Repositories'),
     'Raulg\\TiendaZapateria\\' => array($baseDir . '/'),
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src/PhpOption'),
+    'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Models\\' => array($baseDir . '/Models'),
     'Lib\\' => array($baseDir . '/Lib'),
     'GrahamCampbell\\ResultType\\' => array($vendorDir . '/graham-campbell/result-type/src'),

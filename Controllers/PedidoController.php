@@ -22,9 +22,10 @@ class PedidoController {
             $estado = "Procesando";
             $fecha = date("Y-m-d");
             $hora = date("H:i:s");
+            $nombreUsuario = $_SESSION["identity"]->nombre;
 
-            Pedido::realizar($usuario_id, $provincia, $localidad, $direccion, $coste, $estado, $fecha, $hora, $_SESSION["carrito"]);
-            $this->pages->render("pedido/pedido");
+            $id = Pedido::realizar($usuario_id, $provincia, $localidad, $direccion, $coste, $estado, $fecha, $hora, $_SESSION["carrito"],$nombreUsuario);
+            $this->pages->render("pedido/pedido", ["idPedido" => $id]);
         } else {
             $this->pages->render("pedido/pedido", ["noLog"=>true]);
         }
