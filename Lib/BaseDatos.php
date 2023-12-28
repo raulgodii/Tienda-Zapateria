@@ -66,4 +66,8 @@ class BaseDatos{
     public function cierraConexion(){
         $this->conexion = null;
     }
+    
+    public function lastInsertId(){
+        return $this->conexion->lastInsertId();
+    }
 }

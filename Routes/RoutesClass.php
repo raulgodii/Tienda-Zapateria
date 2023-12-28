@@ -5,6 +5,7 @@ namespace Routes;
 
 use Controllers\CarritoController;
 use Controllers\CategoriaController;
+use Controllers\PedidoController;
 use Controllers\ProductoController;
 use Lib\Router;
 use Controllers\UsuarioController;
@@ -81,6 +82,10 @@ class RoutesClass{
 
         Router::add('GET','/Carrito/Vaciar/', function (){
             return (new CarritoController)->vaciar();
+        });
+
+        Router::add('GET','/Pedido/Realizar/', function (){
+            return (new PedidoController)->realizar();
         });
         
         Router::dispatch();
