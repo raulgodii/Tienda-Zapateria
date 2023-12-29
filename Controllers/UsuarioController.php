@@ -97,4 +97,8 @@ class UsuarioController{
     public function prueba($id){
         $this->pages->render('Usuario/prueba', ["id" => $id]);
     }
+
+    public function registrarUsuario(){
+        $this->pages->render('Usuario/registrarUsuario');
+    }
 }

@@ -80,7 +80,7 @@ class Usuario{
             $data['apellidos'] ?? '',
             $data['email'] ?? '',
             $data['password'] ?? '',
-            $data['rol'] ?? ''
+            $data['rol'] ?? 'user'
         );
     }
 
@@ -107,7 +107,7 @@ class Usuario{
         $apellidos = $this->getApellidos();
         $email = $this->getEmail();
         $password = $this->getPassword();
-        $rol = 'user';
+        $rol = $this->getRol();
         
         try{
             $ins = $this->db->prepara("INSERT INTO usuarios (id, nombre, apellidos, email, password, rol) values (:id, :nombre, :apellidos, :email, :password, :rol)");

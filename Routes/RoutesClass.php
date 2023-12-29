@@ -92,6 +92,9 @@ class RoutesClass{
             return (new PedidoController)->gestionar();
         });
         
+        Router::add('GET','/Usuario/registrarUsuario/', function (){
+            return (new UsuarioController)->registrarUsuario();
+        });
         Router::dispatch();
     }
 }

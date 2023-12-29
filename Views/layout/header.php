@@ -14,13 +14,15 @@ use Controllers\CategoriaController;
     </ul>
 </nav>
 
-
-<?php if(isset($_SESSION['identity']) && $_SESSION['identity']->rol == "admin"): ?>
+<?php if(isset($_SESSION['identity'])): ?>
     <ul>
-        <li><a href="<?=BASE_URL?>Pedido/gestionarPedidos/">Gestionar pedidos</a></li>
-        <li><a href="<?=BASE_URL?>Producto/gestionarProductos/">Gestionar productos</a></li>
-        <li><a href="<?=BASE_URL?>Categoria/gestionarCategorias/">Gestionar categorias</a></li>
-        <li><a href="<?=BASE_URL?>Carrito/verCarrito/">Carrito</a></li>
+        <?php if($_SESSION['identity']->rol == "admin"): ?>
+            <li><a href="<?=BASE_URL?>Producto/gestionarProductos/">Gestionar productos</a></li>
+            <li><a href="<?=BASE_URL?>Categoria/gestionarCategorias/">Gestionar categorias</a></li>
+            <li><a href="<?=BASE_URL?>Usuario/registrarUsuario/">Registrar usuario</a></li>
+        <?php endif; ?>
+            <li><a href="<?=BASE_URL?>Pedido/gestionarPedidos/">Gestionar pedidos</a></li>
+            <li><a href="<?=BASE_URL?>Carrito/verCarrito/">Carrito</a></li>
     </ul>
 <?php endif; ?>
 
