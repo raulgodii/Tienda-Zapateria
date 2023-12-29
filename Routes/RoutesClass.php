@@ -87,6 +87,10 @@ class RoutesClass{
         Router::add('GET','/Pedido/Realizar/', function (){
             return (new PedidoController)->realizar();
         });
+
+        Router::add('GET','/Pedido/gestionarPedidos/', function (){
+            return (new PedidoController)->gestionar();
+        });
         
         Router::dispatch();
     }

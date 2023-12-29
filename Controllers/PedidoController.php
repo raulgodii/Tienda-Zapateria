@@ -31,6 +31,14 @@ class PedidoController {
         }
     }
 
+    public static function obtenerPedidos($usuario_id): ?array{
+        return Pedido::getAll($usuario_id);
+    }
+
+    public function gestionar(){
+        $this->pages->render("pedido/gestionarPedidos");
+    }
+
     private function costeTotal(){
         $total = 0;
         foreach ($_SESSION["carrito"] as $codigoProducto => $cantidad){

@@ -17,7 +17,7 @@ use Controllers\CategoriaController;
 
 <?php if(isset($_SESSION['identity']) && $_SESSION['identity']->rol == "admin"): ?>
     <ul>
-        <li><a href="<?=BASE_URL?>Categoria/pedidos/">Gestionar pedidos</a></li>
+        <li><a href="<?=BASE_URL?>Pedido/gestionarPedidos/">Gestionar pedidos</a></li>
         <li><a href="<?=BASE_URL?>Producto/gestionarProductos/">Gestionar productos</a></li>
         <li><a href="<?=BASE_URL?>Categoria/gestionarCategorias/">Gestionar categorias</a></li>
         <li><a href="<?=BASE_URL?>Carrito/verCarrito/">Carrito</a></li>

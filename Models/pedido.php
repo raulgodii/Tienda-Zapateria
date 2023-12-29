@@ -78,4 +78,12 @@ class Pedido {
             echo "Error al enviar el correo: {$mail->ErrorInfo}";
         }
     }
+
+    public static function getAll($usuario_id):?array{
+        $pedido = new Pedido();
+        $pedido->db->consulta("SELECT * FROM pedidos WHERE usuario_id = \"{$usuario_id}\"");
+        $pedidos = $pedido->db->extraer_todos();
+        $pedido->db->cierraConexion();
+        return $pedidos;
+    }
 }
