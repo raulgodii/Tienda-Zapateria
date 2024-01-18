@@ -1,9 +1,13 @@
 <?php
-
 namespace Controllers;
-    class ErrorController{
-        public static function show_error404(){
-            echo "<h1>La página que buscas no existe.</h1>";
-        }
+use Lib\Pages;
+
+class ErrorController{
+    private Pages $pages;
+    function __construct(){
+        $this->pages = new Pages();
     }
-?>
+    public function error404(){
+        $this->pages->render('error/error', ['titulo' => 'Pagina no encontrada']);
+    }
+}
