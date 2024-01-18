@@ -3,7 +3,7 @@
         'name' => 'raul/tienda-zapateria-1',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '3b51e0ead4b3b36387fb0b5501cbcf896eeb5b37',
+        'reference' => '7684d7a4e4ced7a42f27689c537082d0d29077b6',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,7 +40,7 @@
         'raul/tienda-zapateria-1' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '3b51e0ead4b3b36387fb0b5501cbcf896eeb5b37',
+            'reference' => '7684d7a4e4ced7a42f27689c537082d0d29077b6',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
