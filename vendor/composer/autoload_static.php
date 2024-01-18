@@ -13,35 +13,15 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
     );
 
     public static $prefixLengthsPsr4 = array (
-        'U' => 
-        array (
-            'Utils\\' => 6,
-        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
-            'Services\\' => 9,
-        ),
-        'R' => 
-        array (
-            'Routes\\' => 7,
-            'Repositories\\' => 13,
-            'Raulg\\TiendaZapateria\\' => 22,
         ),
         'P' => 
         array (
             'PhpOption\\' => 10,
-            'PHPMailer\\PHPMailer\\' => 20,
-        ),
-        'M' => 
-        array (
-            'Models\\' => 7,
-        ),
-        'L' => 
-        array (
-            'Lib\\' => 4,
         ),
         'G' => 
         array (
@@ -51,17 +31,9 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
         array (
             'Dotenv\\' => 7,
         ),
-        'C' => 
-        array (
-            'Controllers\\' => 12,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Utils\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/Utils',
-        ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
@@ -74,37 +46,9 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'Services\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/Services',
-        ),
-        'Routes\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/Routes',
-        ),
-        'Repositories\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/Repositories',
-        ),
-        'Raulg\\TiendaZapateria\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/',
-        ),
         'PhpOption\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
-        ),
-        'PHPMailer\\PHPMailer\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
-        ),
-        'Models\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/Models',
-        ),
-        'Lib\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/Lib',
         ),
         'GrahamCampbell\\ResultType\\' => 
         array (
@@ -114,10 +58,10 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
-        'Controllers\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/Controllers',
-        ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/../..' . '/src',
     );
 
     public static $classMap = array (
@@ -134,6 +78,7 @@ class ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa::$fallbackDirsPsr4;
             $loader->classMap = ComposerStaticInite875ae8441d070d7dda5f4b47a2117aa::$classMap;
 
         }, null, ClassLoader::class);

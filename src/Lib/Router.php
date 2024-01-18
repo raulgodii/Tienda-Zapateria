@@ -33,9 +33,15 @@ class Router {
             $param = $match[0];
             $action=preg_replace('/'.$match[0].'/',':id',$action);//quitamos la primera parte que se repite siempre (clinicarouter)
         }
-        
-        $callback = self::$routes[$method][$action];
-       
-        echo call_user_func($callback, $param);
+
+        $fn = self::$routes[$method][$action];
+
+        if($fn) {
+            $callback = self::$routes[$method][$action];
+            echo call_user_func($callback, $param);
+        } else {
+            header('Location: /Tienda-Zapateria-1/error/');
+        }
+
     }
 }

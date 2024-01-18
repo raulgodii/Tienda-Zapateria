@@ -12,7 +12,7 @@ use Controllers\UsuarioController;
 class RoutesClass{
     public static function routes(){
         Router::add('GET','/', function (){
-            return "Bienvenido";
+            return (new UsuarioController())->login();
         });
         
         Router::add('POST','/Usuario/login/', function (){
