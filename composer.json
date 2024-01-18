@@ -4,7 +4,14 @@
     "license": "none",
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "Raulg\\Tienda\\": "src/",
+            "Controllers\\": "./src/Controllers",
+            "Models\\": "./src/Models",
+            "Lib\\": "./src/Lib",
+            "Views\\": "./src/Views", 
+            "Routes\\": "./src/Routes",
+            "Utils\\": "./src/Utils",
+            "Repositories\\": "./src/Repositories"
         }
     },
     "authors": [
@@ -14,6 +21,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "vlucas/phpdotenv": "^5.6"
+        "vlucas/phpdotenv": "^5.6",
+        "phpmailer/phpmailer": "^6.9"
     }
 }

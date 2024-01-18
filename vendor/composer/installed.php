@@ -3,7 +3,7 @@
         'name' => 'raul/tienda-zapateria-1',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'dd6a74aafc73373a2372ec947f0e066ba3136311',
+        'reference' => '80a79e33c0d47f085128881eec6e2a93737757bc',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -19,6 +19,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'phpmailer/phpmailer' => array(
+            'pretty_version' => 'v6.9.1',
+            'version' => '6.9.1.0',
+            'reference' => '039de174cd9c17a8389754d3b877a2ed22743e18',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpmailer/phpmailer',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'phpoption/phpoption' => array(
             'pretty_version' => '1.9.2',
             'version' => '1.9.2.0',
@@ -31,7 +40,7 @@
         'raul/tienda-zapateria-1' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'dd6a74aafc73373a2372ec947f0e066ba3136311',
+            'reference' => '80a79e33c0d47f085128881eec6e2a93737757bc',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
