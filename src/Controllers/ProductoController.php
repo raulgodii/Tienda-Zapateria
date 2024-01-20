@@ -29,6 +29,11 @@ class ProductoController{
         $this->pages->render("producto/gestionarProductos");
     }
 
+    public function eliminarProducto($id):void {
+        Producto::eliminarProducto($id);
+        $this->pages->render("producto/gestionarProductos");
+    }
+
     public static function getNombre($id){
         return Producto::getNombre($id)[0]["nombre"];
     }

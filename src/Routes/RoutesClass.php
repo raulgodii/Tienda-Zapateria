@@ -100,6 +100,15 @@ class RoutesClass{
         Router::add('GET','/Usuario/registrarUsuario/', function (){
             return (new UsuarioController)->registrarUsuario();
         });
+
+        Router::add('GET','/eliminarProducto/:id/', function ($id){
+            return (new ProductoController)->eliminarProducto($id);
+        });
+
+        Router::add('GET','/eliminarCategoria/:id/', function ($id){
+            return (new CategoriaController)->eliminarCategoria($id);
+        });
+
         Router::dispatch();
     }
 }

@@ -84,14 +84,6 @@ class Usuario{
         );
     }
 
-    public function validar(){
-
-    }
-
-    public function sanititizar(){
-
-    }
-
     public function save(){
         if($this->getId()){
             return $this->update();
@@ -179,5 +171,49 @@ class Usuario{
 
     public function desconecta():void{
         $this->db->cierraConexion();
+    }
+
+    public function validar(){
+        $errores = [];
+
+        // Validar nombre
+        if (!preg_match('/^[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+$/', $this->nombre)) {
+            $errores[] = 'El nombre no es válido. Solo se permiten letras y espacios.';
+        }
+
+        // Validar apellidos
+        if (!preg_match('/^[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+$/', $this->apellidos)) {
+            $errores[] = 'Los apellidos no son válidos. Solo se permiten letras y espacios.';
+        }
+
+        // Validar email
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            $errores[] = 'El email no es válido.';
+        }
+
+        // Validar password (al menos 8 caracteres, una mayúscula, una minúscula y un número)
+        if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/', $this->password)) {
+            $errores[] = 'La contraseña no cumple con los requisitos.';
+        }
+
+        // Validar rol
+        $rolesPermitidos = ['admin', 'user'];
+        if (!in_array($this->rol, $rolesPermitidos)) {
+            $errores[] = 'El rol no es válido.';
+        }
+
+        return $errores;
+    }
+
+    public function sanitizar(){
+        $this->nombre = filter_var($this->nombre, FILTER_SANITIZE_SPECIAL_CHARS);
+        $this->apellidos = filter_var($this->apellidos, FILTER_SANITIZE_SPECIAL_CHARS);
+
+        // Sanitizar email
+        $this->email = filter_var($this->email, FILTER_SANITIZE_EMAIL);
+
+        $this->password = filter_var($this->password, FILTER_SANITIZE_SPECIAL_CHARS);
+
+        $this->rol = filter_var($this->rol, FILTER_SANITIZE_SPECIAL_CHARS);
     }
 }

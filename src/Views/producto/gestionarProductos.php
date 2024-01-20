@@ -9,11 +9,18 @@ use Controllers\ProductoController;
 <?php $productos = ProductoController::obtenerProductos() ?>
 
 <table>
+    <tr>
+        <th>Imagen</th>
+        <th>Nombre</th>
+        <th>ID</th>
+        <th>Accion</th>
+    </tr>
         <?php foreach($productos as $producto): ?>
         <tr>
+            <td><img style="width: 20px;"src="<?=BASE_URL?>public/img/<?=$producto["imagen"]?>" alt="img"></td>
             <td><?=$producto['nombre']?></td>
             <td><?=$producto['id']?></td>
-            <td><img src="../../img/<?=$producto['imagen']?>" alt="img"></td>
+            <td><a href="<?=BASE_URL?>/eliminarProducto/<?=$producto['id']?>">Eliminar</a></td>
         </tr>
         <?php endforeach; ?>
 </table>

@@ -65,6 +65,10 @@ CONSTRAINT fk_linea_pedido FOREIGN KEY(pedido_id) REFERENCES pedidos(id),
 CONSTRAINT fk_linea_producto FOREIGN KEY(producto_id) REFERENCES productos(id)
 )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+-- Insertar Admin para probar
+INSERT INTO usuarios (nombre, apellidos, email, password, rol)
+VALUES ('Administrador', 'Admin Apellidos', 'admin@admin.com', 'admin', 'admin');
+
 -- Insertar 5 categorías
 INSERT INTO categorias (nombre) VALUES
 ('Electrónica'),

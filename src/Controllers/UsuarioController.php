@@ -23,10 +23,10 @@ class UsuarioController{
                 $usuario = Usuario::fromArray($registrado);
 
                 // Validar
-                // $errores = $usuario->validar()
-                // if(empty($errores)){
-                    //$atributos = $usuario->sanititizar();
-                //}
+                $errores = $usuario->validar();
+                if(empty($errores)){
+                    $atributos = $usuario->sanitizar();
+                }
 
                 // Sanear
 

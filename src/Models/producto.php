@@ -86,4 +86,10 @@ class Producto {
 
         $producto->db->cierraConexion();
     }
+
+    public static function eliminarProducto($id){
+        $producto = new Producto();
+        $producto->db->consulta("DELETE FROM productos WHERE id = {$id}");
+        $producto->db->cierraConexion();
+    }
 }

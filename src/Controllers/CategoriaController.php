@@ -33,4 +33,9 @@ class CategoriaController{
         $productos = Categoria::getProductos($categoriaId);
         $this->pages->render("categoria/verProductos", ["categoria" => $categoriaId, "productos" => [$productos]]);
     }
+
+    public function eliminarCategoria($id):void {
+        Categoria::eliminarCategoria($id);
+        $this->pages->render("Categoria/gestionarCategorias");
+    }
 }

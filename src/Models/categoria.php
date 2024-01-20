@@ -53,4 +53,10 @@ class Categoria {
         $categoria->db->cierraConexion();
         return $productos;
     }
+
+    public static function eliminarCategoria($id){
+        $categoria = new Categoria();
+        $categoria->db->consulta("DELETE FROM categorias WHERE id = {$id}");
+        $categoria->db->cierraConexion();
+    }
 }
