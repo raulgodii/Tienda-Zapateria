@@ -61,6 +61,7 @@ class CarritoController {
     public function vaciar() {
         // Vaciar el carrito eliminando la variable de sesión
         unset($_SESSION['carrito']);
+        $this->pages->render("carrito/verCarrito");
     }
 
 

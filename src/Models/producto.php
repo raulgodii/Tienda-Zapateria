@@ -69,7 +69,7 @@ class Producto {
             }
     
             // Mover la foto al directorio deseado
-            $directorioDestino = "./img/";
+            $directorioDestino = "./public/img/";
             $rutaFinalFoto = $directorioDestino . $nombreFoto;
             move_uploaded_file($rutaTempFoto, $rutaFinalFoto);
 

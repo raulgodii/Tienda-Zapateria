@@ -64,3 +64,25 @@ CONSTRAINT pk_lineas_pedidos PRIMARY KEY(id),
 CONSTRAINT fk_linea_pedido FOREIGN KEY(pedido_id) REFERENCES pedidos(id),
 CONSTRAINT fk_linea_producto FOREIGN KEY(producto_id) REFERENCES productos(id)
 )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- Insertar 5 categorías
+INSERT INTO categorias (nombre) VALUES
+('Electrónica'),
+('Ropa'),
+('Hogar'),
+('Deportes'),
+('Libros');
+
+-- Insertar 20 productos
+INSERT INTO productos (categoria_id, nombre, descripcion, precio, stock, oferta, fecha, imagen) VALUES
+(1, 'Smartphone X', 'Teléfono inteligente de última generación', 699.99, 50, 'No', '2024-01-20', 'producto.png'),
+(1, 'Tablet Y', 'Tablet de alta resolución y rendimiento', 299.99, 30, 'Sí', '2024-01-21', 'producto.png'),
+(2, 'Camiseta Casual', 'Camiseta cómoda para uso diario', 19.99, 100, 'No', '2024-01-22', 'producto.png'),
+(3, 'Sofá Reclinable', 'Sofá cómodo y elegante para el hogar', 799.99, 10, 'No', '2024-01-23', 'producto.png'),
+(4, 'Zapatillas Deportivas', 'Zapatillas para correr con tecnología avanzada', 89.99, 50, 'No', '2024-01-24', 'producto.png'),
+(5, 'Libro de Ciencia Ficción', 'Novela emocionante ambientada en el futuro', 24.99, 20, 'No', '2024-01-25', 'producto.png'),
+(1, 'Auriculares Inalámbricos', 'Auriculares con cancelación de ruido', 129.99, 40, 'Sí', '2024-01-26', 'producto.png'),
+(2, 'Vestido Elegante', 'Vestido para ocasiones especiales', 59.99, 25, 'No', '2024-01-27', 'producto.png'),
+(3, 'Mesa de Centro', 'Mesa elegante para la sala de estar', 149.99, 15, 'No', '2024-01-28', 'producto.png'),
+(4, 'Balón de Fútbol', 'Balón oficial de la liga', 29.99, 30, 'No', '2024-01-29', 'producto.png'),
+(5, 'Novela Romántica', 'Historia de amor apasionante', 19.99, 20, 'No', '2024-01-30', 'producto.png');
