@@ -13,7 +13,7 @@ use Controllers\UsuarioController;
 class RoutesClass{
     public static function routes(){
         Router::add('GET','/', function (){
-            return (new UsuarioController())->login();
+            return (new ProductoController())->index();
         });
 
         Router::add('GET','/error/', function (){

@@ -1,4 +1,5 @@
 <?php
+
 namespace Models;
 
 use Controllers\ProductoController;
@@ -7,26 +8,49 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-class Pedido {
-    
+class Pedido
+{
+
     private $db;
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = new BaseDatos();
     }
 
-    public static function realizar($usuario_id, $provincia, $localidad, $direccion, $coste, $estado, $fecha, $hora, $carrito, $nombreUsuario){
+    public static function realizar($usuario_id, $provincia, $localidad, $direccion, $coste, $estado, $fecha, $hora, $carrito, $nombreUsuario)
+    {
         $pedido = new Pedido();
-        $pedido->db->consulta("INSERT INTO pedidos (usuario_id, provincia, localidad, direccion, coste, estado, fecha, hora) VALUES ($usuario_id, \"{$provincia}\", \"{$localidad}\", \"{$direccion}\", $coste, \"{$estado}\", \"{$fecha}\", \"{$hora}\")");
-        $pedidoId = $pedido->db->lastInsertId();
-        $pedido->db->cierraConexion();
-        $pedido->lineaPedido($carrito, $pedidoId, $nombreUsuario, $coste);
-        return $pedidoId;
+        if ($pedido->compruebaUnidades($carrito)) {
+
+
+            
+            $pedido->db->consulta("INSERT INTO pedidos (usuario_id, provincia, localidad, direccion, coste, estado, fecha, hora) VALUES ($usuario_id, \"{$provincia}\", \"{$localidad}\", \"{$direccion}\", $coste, \"{$estado}\", \"{$fecha}\", \"{$hora}\")");
+            $pedidoId = $pedido->db->lastInsertId();
+            $pedido->db->cierraConexion();
+            $pedido->lineaPedido($carrito, $pedidoId, $nombreUsuario, $coste);
+            return $pedidoId;
+        } else {
+            return false;
+        }
     }
 
-    private function lineaPedido($carrito, $pedidoId, $nombreUsuario, $coste){
+    private function compruebaUnidades($carrito){
+        $producto = new Producto;
+
+        foreach ($carrito as $productoId => $cantidad) {
+
+            if(((Producto::getUnidadesDisponibles($productoId)) - $cantidad)<0){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private function lineaPedido($carrito, $pedidoId, $nombreUsuario, $coste)
+    {
         $pedido = new Pedido();
-        var_dump($carrito);
-        foreach($carrito as $productoId => $cantidad){
+        foreach ($carrito as $productoId => $cantidad) {
             $pedido->db->consulta("INSERT INTO lineas_pedidos (pedido_id, producto_id, unidades) VALUES ($pedidoId, $productoId, $cantidad)");
         }
 
@@ -37,7 +61,8 @@ class Pedido {
         $pedido->enviarMail($pedidoId, $nombreUsuario, $carrito, $coste);
     }
 
-    private function actualizarUnidadesProducto($productoId, $cantidad) {
+    private function actualizarUnidadesProducto($productoId, $cantidad)
+    {
         $pedido = new Pedido();
 
         $producto = new Producto;
@@ -48,7 +73,8 @@ class Pedido {
         $pedido->db->cierraConexion();
     }
 
-    private function enviarMail($pedidoId, $nombreUsuario, $carrito, $coste){
+    private function enviarMail($pedidoId, $nombreUsuario, $carrito, $coste)
+    {
         $mail = new PHPMailer(true);
 
         try {
@@ -70,7 +96,7 @@ class Pedido {
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->Subject = "Pedido {$pedidoId} realizado con exito!";
             $productos = "";
-            foreach($carrito as $productoId => $cantidad){
+            foreach ($carrito as $productoId => $cantidad) {
                 $nombreProducto = ProductoController::getNombre($productoId);
                 $precio = ProductoController::getPrecio($productoId);
                 $productos .= "<tr><td>$nombreProducto</td><td>$cantidad</td><td>$precio</td></tr>";
@@ -94,7 +120,8 @@ class Pedido {
         }
     }
 
-    public static function getAll($usuario_id):?array{
+    public static function getAll($usuario_id): ?array
+    {
         $pedido = new Pedido();
         $pedido->db->consulta("SELECT * FROM pedidos WHERE usuario_id = \"{$usuario_id}\"");
         $pedidos = $pedido->db->extraer_todos();

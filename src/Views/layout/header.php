@@ -23,12 +23,14 @@ use Controllers\CategoriaController;
         <?php endif; ?>
             <li><a href="<?=BASE_URL?>Pedido/gestionarPedidos/">Gestionar pedidos</a></li>
             <li><a href="<?=BASE_URL?>Carrito/verCarrito/">Carrito</a></li>
+            <li><a href="<?=BASE_URL?>">Inicio</a></li>
     </ul>
 <?php endif; ?>
 
 
 <ul>
 <?php if(!isset($_SESSION['identity'])): ?>
+    <li><a href="<?=BASE_URL?>">Inicio</a></li>
     <li><a href="<?=BASE_URL?>Usuario/login/">Identificarse</a></li>
     <li><a href="<?=BASE_URL?>Usuario/registro/">Registrarse</a></li>
     <li><a href="<?=BASE_URL?>Carrito/verCarrito/">Carrito</a></li>

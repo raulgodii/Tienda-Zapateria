@@ -15,6 +15,10 @@ class ProductoController{
         return Producto::getAll();
     }
 
+    public function index():void{
+        $this->pages->render("producto/mostrarProductos");
+    }
+
     public function gestionarProductos():void{
         $this->pages->render("producto/gestionarProductos");
     }
@@ -44,5 +48,9 @@ class ProductoController{
 
     public static function getUnidadesDisponibles($codProducto){
         return Producto::getUnidadesDisponibles($codProducto);
+    }
+
+    public static function mostrarProductos(){
+
     }
 }
