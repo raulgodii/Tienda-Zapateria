@@ -92,4 +92,12 @@ class Producto {
         $producto->db->consulta("DELETE FROM productos WHERE id = {$id}");
         $producto->db->cierraConexion();
     }
+
+    public static function getUnidadesDisponibles($codProducto){
+        $producto = new Producto();
+        $producto->db->consulta("SELECT stock FROM productos WHERE id={$codProducto}");
+        $unidades = $producto->db->extraer_todos();
+        $producto->db->cierraConexion();
+        return $unidades[0]["stock"];
+    }
 }

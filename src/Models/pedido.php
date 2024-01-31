@@ -25,12 +25,27 @@ class Pedido {
 
     private function lineaPedido($carrito, $pedidoId, $nombreUsuario, $coste){
         $pedido = new Pedido();
+        var_dump($carrito);
         foreach($carrito as $productoId => $cantidad){
             $pedido->db->consulta("INSERT INTO lineas_pedidos (pedido_id, producto_id, unidades) VALUES ($pedidoId, $productoId, $cantidad)");
         }
+
+        $this->actualizarUnidadesProducto($productoId, $cantidad);
+
         $pedido->db->cierraConexion();
 
         $pedido->enviarMail($pedidoId, $nombreUsuario, $carrito, $coste);
+    }
+
+    private function actualizarUnidadesProducto($productoId, $cantidad) {
+        $pedido = new Pedido();
+
+        $producto = new Producto;
+        $nuevasUnidades = (Producto::getUnidadesDisponibles($productoId)) - $cantidad;
+
+        $pedido->db->consulta("UPDATE productos SET stock = $nuevasUnidades WHERE id = $productoId");
+
+        $pedido->db->cierraConexion();
     }
 
     private function enviarMail($pedidoId, $nombreUsuario, $carrito, $coste){

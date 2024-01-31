@@ -41,4 +41,8 @@ class ProductoController{
     public static function getPrecio($id){
         return Producto::getPrecio($id)[0]["precio"];
     }
+
+    public static function getUnidadesDisponibles($codProducto){
+        return Producto::getUnidadesDisponibles($codProducto);
+    }
 }

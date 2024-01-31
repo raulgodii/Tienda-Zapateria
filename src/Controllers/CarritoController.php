@@ -20,23 +20,31 @@ class CarritoController {
     }
 
     public function agregar($codigoProducto) {
+        $productoController = new ProductoController();
+        $unidadesDisponibles = $productoController::getUnidadesDisponibles($codigoProducto);
+
         // Obtener el contenido actual del carrito desde la variable de sesión
         $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
-
+    
         // Verificar si el producto ya está en el carrito
         if (isset($carrito[$codigoProducto])) {
-            // Si ya está en el carrito, sumar la cantidad
-            $carrito[$codigoProducto] ++;
+            // Si ya está en el carrito, verificar si se pueden agregar más unidades
+            if ($carrito[$codigoProducto] < $unidadesDisponibles) {
+                $carrito[$codigoProducto]++;
+            }
         } else {
-            // Si no está en el carrito, añadirlo con la cantidad 1
-            $carrito[$codigoProducto] = 1;
+            // Si no está en el carrito y hay unidades disponibles, añadirlo con la cantidad 1
+            if ($unidadesDisponibles > 0) {
+                $carrito[$codigoProducto] = 1;
+            }
         }
-
+    
         // Actualizar la variable de sesión con el nuevo contenido del carrito
         $_SESSION['carrito'] = $carrito;
-
+    
         $this->pages->render("carrito/verCarrito");
     }
+    
 
     public function quitar($codigoProducto) {
         // Obtener el contenido actual del carrito desde la variable de sesión

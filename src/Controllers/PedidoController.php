@@ -25,6 +25,8 @@ class PedidoController {
             $nombreUsuario = $_SESSION["identity"]->nombre;
 
             $id = Pedido::realizar($usuario_id, $provincia, $localidad, $direccion, $coste, $estado, $fecha, $hora, $_SESSION["carrito"],$nombreUsuario);
+            $carritoController = new CarritoController();
+            $carritoController->vaciar();
             $this->pages->render("pedido/pedido", ["idPedido" => $id]);
         } else {
             $this->pages->render("pedido/pedido", ["noLog"=>true]);
